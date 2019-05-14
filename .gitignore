@@ -4,3 +4,6 @@ node_modules
 .DS_Store
 .idea
 package-lock.json
+yarn-error.log
+es/
+lib/
