@@ -2,3 +2,5 @@ node_modules
 .node-version
 .env
 .DS_Store
+.idea
+package-lock.json
