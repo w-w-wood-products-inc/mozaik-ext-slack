@@ -30,7 +30,15 @@ const config = convict({
     },
     // For testing/development
     // NOTE: Use JSON in .env
-    // Example: SLACK_ECHO_MESSAGE = { "type": "message", "channel": "C02GVP9DZ", "user": "U02558FA2", "text": "Hello from Slack!", "ts": "1475003567.000006", "team": "T0254ARL8" }
+    // Example:
+    //   SLACK_ECHO_MESSAGE = {
+    //     "type":    "message",
+    //     "channel": "C02GVP9DZ",
+    //     "user":    "U02558FA2",
+    //     "text":    "Hello from Slack!",
+    //     "ts":      "1475003567.000006",
+    //     "team":    "T0254ARL8"
+    //   }
 
     echoMessage: {
       doc:     'Slack message to simulate',
