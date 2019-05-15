@@ -419,5 +419,6 @@ function required() {
   throw new Error('Missing requirement');
 }
 
+module.exports = client;
 export default client;
 export { replaceEmojis, matchChannel };
