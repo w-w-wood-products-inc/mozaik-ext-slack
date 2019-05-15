@@ -16,14 +16,12 @@ export default class HelloWorld extends Component {
     theme: PropTypes.object,
   }
 
-  static getApiRequest({ project }) {
-    return null
-  }
+
 
   render() {
     return (
       <Widget>
-        <WidgetHeader title={Hello} />
+        <WidgetHeader title="Hello" />
         <WidgetBody>World.</WidgetBody>
       </Widget>
     )

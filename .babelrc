@@ -1,6 +1,5 @@
 {
   "presets": [
-    "@mozaik/babel-preset",
-    "react"
+    "@mozaik/babel-preset"
   ]
 }
