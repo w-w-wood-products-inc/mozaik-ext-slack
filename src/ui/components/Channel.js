@@ -10,8 +10,8 @@ import moment     from 'moment';
 
 import { ListenerMixin } from 'reflux';
 
-import Since   from './Since.jsx';
-import Impulse from './Impulse.jsx';
+import Since   from './Since.js';
+import Impulse from './Impulse.js';
 
 const MIN_FONT_SIZE = 10;
 

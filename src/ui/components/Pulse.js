@@ -7,7 +7,7 @@ import reactMixin    from 'react-mixin';
 import ListenerMixin from 'reflux';
 import Mozaik        from 'mozaik/browser';
 
-import Impulse from './Impulse.jsx';
+import Impulse from './Impulse.js';
 
 var d3   = require('d3');
 var ease = require('d3-ease');
