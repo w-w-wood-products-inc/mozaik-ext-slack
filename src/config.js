@@ -1,6 +1,6 @@
 const convict = require('convict');
 
-import path from 'path';
+var path = require('path');
 
 const config = convict({
   slack: {
@@ -49,4 +49,4 @@ const config = convict({
   }
 });
 
-export default config;
+exports.default = config;

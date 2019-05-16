@@ -1,16 +1,17 @@
-import path             from 'path';
-import fs               from 'fs';
-import request          from 'request';
-import zlib             from 'zlib';
-import chalk            from 'chalk';
-import _                from 'lodash';
-import slack            from 'slack';
-import emoji            from 'emojilib';
-import moment           from 'moment';
-import mm               from 'micromatch';
-import getFormatRemover from 'slack-remove-formatting';
 
-import EchoClient from './echo.client';
+var path                  = require('path'                   );
+var fs                    = require('fs'                     );
+var request               = require('request'                );
+var zlib                  = require('zlib'                   );
+var chalk                 = require('chalk'                  );
+var _                     = require('lodash'                 );
+var slack                 = require('slack'                  );
+var emoji                 = require('emojilib'               );
+var moment                = require('moment'                 );
+var mm                    = require('micromatch'             );
+var getFormatRemover      = require('slack-remove-formatting');
+
+var EchoClient = require('./echo.client').EchoClient;
 
 const reConnectInterval = 30 * 30 * 1000; // 30mins
 const tempDirName       = 'images';
@@ -241,7 +242,7 @@ function dirExists(dir) {
 }
 
 // Create backend client for extension
-const client = mozaik => {
+module.exports =  mozaik => {
   // NOTE: Loaded here to avoid issues with testing
   const config = require('./config').default;
 
@@ -419,6 +420,4 @@ function required() {
   throw new Error('Missing requirement');
 }
 
-module.exports = client;
-export default client;
-export { replaceEmojis, matchChannel };
+// module.exports = [client, replaceEmojis, matchChannel];

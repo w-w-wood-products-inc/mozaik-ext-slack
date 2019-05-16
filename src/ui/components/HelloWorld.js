@@ -11,9 +11,13 @@ import { Widget, WidgetHeader, WidgetBody } from '@mozaik/ui'
  * the repository to get information about.
  */
 export default class HelloWorld extends Component {
-  static propTypes = {
-    apiData: PropTypes.object,
-    theme: PropTypes.object,
+  constructor() {
+    super();
+
+    this.propTypes ={
+      apiData: PropTypes.object,
+      theme: PropTypes.object,
+    };
   }
 
 

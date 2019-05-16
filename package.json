@@ -34,7 +34,7 @@
     "request": "^2.79.0",
     "request-promise-native": "^1.0.3",
     "sha.js": "^2.4.10",
-    "slack": "^11.0.2",
+    "slack": "^7.3.0",
     "slack-remove-formatting": "^0.2.0",
     "url-parse": "^1.2.0",
     "util.promisify": "^1.0.0",
