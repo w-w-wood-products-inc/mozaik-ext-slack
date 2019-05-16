@@ -14,7 +14,7 @@ var ease = require('d3-ease');
 
 import _ from 'lodash';
 
-class Pulse extends Component {
+export default class Pulse extends Component {
   constructor(props) {
     super(props);
 
@@ -70,5 +70,3 @@ Pulse.defaultProps = {
 // apply the mixins on the component
 reactMixin(Pulse.prototype, ListenerMixin);
 reactMixin(Pulse.prototype, Mozaik.Mixin.ApiConsumer);
-
-export default Pulse;

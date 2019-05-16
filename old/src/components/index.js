@@ -1,9 +1,9 @@
 import Since from './Since.jsx';
 import Channel from './Channel.jsx';
-import Pulse from './Pulse.jsx';
+import Impulse from './Impulse';
 
 export default {
   Since,
   Channel,
-  Pulse
+  Impulse
 };
