@@ -1,7 +1,4 @@
-import {
-  React,
-  Component
-} from 'react';
+import React, { Component } from 'react'
 
 import reactMixin    from 'react-mixin';
 import ListenerMixin from 'reflux';

@@ -10,6 +10,9 @@ import moment     from 'moment';
 
 import { ListenerMixin } from 'reflux';
 
+
+import PropTypes from 'prop-types';
+
 import Since   from './Since.js';
 import Impulse from './Impulse.js';
 
@@ -190,12 +193,12 @@ class Channel extends Component {
 }
 
 Channel.propTypes = {
-  title:      React.PropTypes.string,
-  channel:    React.PropTypes.string,
-  showImages: React.PropTypes.bool,
-  showPulse:  React.PropTypes.bool,
-  keyword:    React.PropTypes.string,
-  imageSize:  React.PropTypes.oneOf(['initial', 'contain', 'cover'])
+  title:      PropTypes.string,
+  channel:    PropTypes.string,
+  showImages: PropTypes.bool,
+  showPulse:  PropTypes.bool,
+  keyword:    PropTypes.string,
+  imageSize:  PropTypes.oneOf(['initial', 'contain', 'cover'])
 };
 
 Channel.defaultProps = {

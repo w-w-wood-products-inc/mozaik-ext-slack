@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 
 import reactMixin from 'react-mixin';
 
 import { ListenerMixin } from 'reflux';
 
 
+import PropTypes from 'prop-types';
 
 import Mozaik from '@mozaik/ui';
 
@@ -70,10 +72,10 @@ export default class Impulse extends Component {
     this.mounted = true;
 
     // Get area size
-    const bodyElement = this._body.getDOMNode();
+    const bodyElement = ReactDOM.findDOMNode(this._body);
 
     this.setState({
-      element: this._svg.getDOMNode(),
+      element: ReactDOM.findDOMNode(this._svg),
       height:  bodyElement.clientHeight,
       width:   bodyElement.clientWidth
     });
@@ -116,10 +118,10 @@ export default class Impulse extends Component {
 }
 
 Impulse.propTypes = {
-  title:   React.PropTypes.string,
-  channel: React.PropTypes.string,
-  config:  React.PropTypes.object,
-  message: React.PropTypes.string
+  title:   PropTypes.string,
+  channel: PropTypes.string,
+  config:  PropTypes.object,
+  message: PropTypes.string
 };
 
 Impulse.defaultProps = {
