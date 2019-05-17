@@ -40,6 +40,9 @@ function getChannels(token) {
         return reject(err || 'Failed retrieving channels');
       }
       channels = response.channels;
+
+
+
       return resolve(channels);
     });
   });
@@ -398,12 +401,14 @@ module.exports =  mozaik => {
   // Initiate by caching some data
   getChannels(token)
     .then((channels) => {
-      mozaik.logger.info(chalk.green('Loaded slack', channels.length, 'channels'));
+      mozaik.logger.info(chalk.green('Loaded slack', channels.length, 'channels:'));
 
+      channels.forEach(channel=> mozaik.logger.info(chalk.green(`\t${channel.name}`)));
       return getUsers(token);
     })
     .then((users) => {
-      mozaik.logger.info(chalk.green('Loaded', users.length, 'slack users'));
+      mozaik.logger.info(chalk.green('Loaded', users.length, 'slack users:'));
+      users.forEach(user=>mozaik.logger.info(chalk.green(`\t${user.name}`)));
       setInterval(reListen, reConnectInterval);
       reListen();
     })
