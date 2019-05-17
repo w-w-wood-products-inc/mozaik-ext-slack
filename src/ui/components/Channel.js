@@ -5,13 +5,8 @@ import hash from 'hash.js';
 
 import ReactDOM from 'react-dom';
 
-import reactMixin from 'react-mixin';
-import Mozaik from '@mozaik/ui';
 import classNames from 'classnames';
 import moment     from 'moment';
-
-import { ListenerMixin } from 'reflux';
-
 
 import PropTypes from 'prop-types';
 
@@ -212,7 +207,7 @@ Channel.defaultProps = {
 };
 
 // apply the mixins on the component
-// reactMixin(Channel.prototype, ListenerMixin);
+//reactMixin(Channel.prototype, ListenerMixin);
 // reactMixin(Channel.prototype, Mozaik.Mixin.ApiConsumer);
 
 export default Channel;
