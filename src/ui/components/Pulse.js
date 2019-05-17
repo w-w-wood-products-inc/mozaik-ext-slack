@@ -5,7 +5,7 @@ import {
 
 import reactMixin    from 'react-mixin';
 import ListenerMixin from 'reflux';
-import Mozaik        from 'mozaik/browser';
+import Mozaik from '@mozaik/ui';
 
 import Impulse from './Impulse.js';
 

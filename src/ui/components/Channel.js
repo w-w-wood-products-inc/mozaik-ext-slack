@@ -4,7 +4,7 @@ import _    from 'lodash';
 import hash from 'hash.js';
 
 import reactMixin from 'react-mixin';
-import Mozaik     from 'mozaik/browser';
+import Mozaik from '@mozaik/ui';
 import classNames from 'classnames';
 import moment     from 'moment';
 

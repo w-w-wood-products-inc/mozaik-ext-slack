@@ -4,7 +4,7 @@ import reactMixin from 'react-mixin';
 
 import { ListenerMixin } from 'reflux';
 
-import Mozaik from 'mozaik/browser';
+import Mozaik from '@mozaik/ui';
 
 var d3 = require('d3');
 var ease = require('d3-ease');
