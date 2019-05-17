@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import _    from 'lodash';
 import hash from 'hash.js';
 
+import ReactDOM from 'react-dom';
+
 import reactMixin from 'react-mixin';
 import Mozaik from '@mozaik/ui';
 import classNames from 'classnames';
@@ -55,7 +57,7 @@ class Channel extends Component {
     this.mounted = true;
 
     // Get area size
-    const bodyElement = this._body.getDOMNode();
+    const bodyElement =  ReactDOM.findDOMNode(this._body);
 
     this.setState({
       height: bodyElement.clientHeight,
