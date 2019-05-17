@@ -207,7 +207,7 @@ Channel.defaultProps = {
 };
 
 // apply the mixins on the component
-reactMixin(Channel.prototype, ListenerMixin);
-reactMixin(Channel.prototype, Mozaik.Mixin.ApiConsumer);
+// reactMixin(Channel.prototype, ListenerMixin);
+// reactMixin(Channel.prototype, Mozaik.Mixin.ApiConsumer);
 
 export default Channel;

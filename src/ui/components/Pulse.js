@@ -6,8 +6,9 @@ import {
 import reactMixin    from 'react-mixin';
 import ListenerMixin from 'reflux';
 import Mozaik from '@mozaik/ui';
+import PropTypes from 'prop-types';
 
-import Impulse from './Impulse.js';
+import Impulse from './Impulse';
 
 var d3   = require('d3');
 var ease = require('d3-ease');
@@ -58,15 +59,15 @@ export default class Pulse extends Component {
 }
 
 Pulse.propTypes = {
-  title:   React.PropTypes.string,
-  channel: React.PropTypes.string,
+  title:   PropTypes.string,
+  channel: PropTypes.string,
 };
 
 Pulse.defaultProps = {
   title:   'Slack',
   channel:  null
 };
-
-// apply the mixins on the component
-reactMixin(Pulse.prototype, ListenerMixin);
-reactMixin(Pulse.prototype, Mozaik.Mixin.ApiConsumer);
+//
+// // apply the mixins on the component
+// reactMixin(Pulse.prototype, ListenerMixin);
+// reactMixin(Pulse.prototype, Mozaik.Mixin.ApiConsumer);

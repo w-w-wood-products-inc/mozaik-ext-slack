@@ -4,6 +4,8 @@ import reactMixin from 'react-mixin';
 
 import { ListenerMixin } from 'reflux';
 
+
+
 import Mozaik from '@mozaik/ui';
 
 var d3 = require('d3');
@@ -37,7 +39,7 @@ function getRandom(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-class Impulse extends Component {
+export default class Impulse extends Component {
   constructor(props) {
     super(props);
 
@@ -125,4 +127,3 @@ Impulse.defaultProps = {
   channel: null
 };
 
-export default Impulse;
