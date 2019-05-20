@@ -391,7 +391,7 @@ module.exports =  mozaik => {
             }
 
             // Delete old files async (not interested in outcome)
-            //deleteFiles(path.join(publicDir, tempDirName), maxImageAge);
+            // deleteFiles(path.join(publicDir, tempDirName), maxImageAge);
 
             // Remove Slack syntax to make outcome more readable
             // const removeFormat = getFormatRemover({

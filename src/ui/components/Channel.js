@@ -16,6 +16,7 @@ import Impulse from './Impulse.js';
 const MIN_FONT_SIZE = 10;
 
 function getStoreValue(key) {
+  console.log(`getStoreValue(${JSON.stringify(key)}`);
   if (typeof(Storage) === 'undefined') {
     return;
   }
@@ -24,6 +25,7 @@ function getStoreValue(key) {
 }
 
 function setStoreValue(key, value) {
+  console.log(value);
   if (typeof(Storage) === 'undefined') {
     return;
   }
@@ -43,7 +45,7 @@ class Channel extends Component {
     this.requestId = `slack.message.${identifier}`;
 
     this.state = {
-      message: getStoreValue(this.requestId),
+      message: "",
       width: 100,
       height: 100
     };
@@ -105,7 +107,7 @@ class Channel extends Component {
     this.renderPulse = true;
 
     this.setState({
-      message: message
+       message: message
     });
   }
 
@@ -125,7 +127,14 @@ class Channel extends Component {
   }
 
   render() {
-    const { message } = this.state;
+
+    const {
+            apiData,
+            theme,
+          } = this.props;
+
+    console.log(JSON.stringify(apiData, null, 2));
+    const message = apiData;
 
     let content = {
       empty:  true,
