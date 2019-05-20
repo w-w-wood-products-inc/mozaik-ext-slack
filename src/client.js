@@ -11,7 +11,7 @@ var moment                = require('moment'                 );
 var mm                    = require('micromatch'             );
 var getFormatRemover      = require('slack-remove-formatting');
 
-var EchoClient = require('./echo.client').EchoClient;
+import EchoClient from './echo.client';
 
 const reConnectInterval = 30 * 30 * 1000; // 30mins
 const tempDirName       = 'images';
@@ -277,7 +277,7 @@ module.exports =  mozaik => {
   if (echoMessage && !_.isEmpty(echoMessage)) {
     mozaik.logger.warn(chalk.yellow('Emulating Slack messages for demo purposes'), typeof echoMessage, echoMessage);
 
-    bot = EchoClient(echoMessage);
+    bot = new EchoClient(echoMessage);
   }
   else {
     mozaik.logger.info(chalk.green('Registering Slack client'));

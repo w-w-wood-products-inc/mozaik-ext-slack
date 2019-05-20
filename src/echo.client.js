@@ -20,7 +20,6 @@ export default class EchoClient {
 
     console.log('calling setInterval to register a message sending handler');
     setInterval(() => {
-      console.log('echo: ' + this.cb);
 
       if(getRandom(0, 100) < 40 && this.cb) {
         console.log("echoClient: sending a message");
