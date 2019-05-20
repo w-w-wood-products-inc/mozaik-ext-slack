@@ -37,6 +37,7 @@ function getChannels(token) {
     if (channels) {
       return resolve(channels);
     }
+    slack.
     // Fetch channels data from Slack
     slack.channels.list({ token }, (err, response) => {
       if (err) {
@@ -282,7 +283,9 @@ module.exports =  mozaik => {
   else {
     mozaik.logger.info(chalk.green('Registering Slack client'));
 
-    bot = slack.rtm.client();
+    bot = slack.rtm.client(token)
+
+
   }
 
   const reListen = () => {
@@ -292,6 +295,7 @@ module.exports =  mozaik => {
     } catch (e) {
       // Closing failed (or not opened yet)
     } finally {
+      console.log('Bot is listening');
       bot.listen({ token });
     }
 
