@@ -14,6 +14,7 @@ import _ from 'lodash';
 
 export default class Pulse extends Component {
   constructor(props) {
+    console.log('Pulse: constructor()');
     super(props);
 
     this.mounted = false;
@@ -24,6 +25,7 @@ export default class Pulse extends Component {
   }
 
   getApiRequest() {
+    console.log('Pulse: getApiRequest()');
     const requestId = this.props.channel ? `slack.message.${this.props.channel}` : 'slack.message';
 
     return {
@@ -35,6 +37,7 @@ export default class Pulse extends Component {
   }
 
   onApiData(data) {
+    console.log(`Pulse: onApiData(${JSON.stringify(data, null, 2)})`);
     this.setState({
       message: data
     });

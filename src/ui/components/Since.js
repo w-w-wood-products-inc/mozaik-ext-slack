@@ -7,6 +7,7 @@ import moment from 'moment';
 
 class Since extends Component {
   constructor(props) {
+    console.log('Since: constructor()');
     super(props);
 
     this.mounted = false;
@@ -18,6 +19,7 @@ class Since extends Component {
   }
 
   getDuration() {
+    console.log('Since: getDuration()');
     if (!this.props.time.diff) {
       this.props.time = moment(this.props.time);
     }

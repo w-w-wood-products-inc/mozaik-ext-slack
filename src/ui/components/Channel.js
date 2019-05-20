@@ -33,6 +33,7 @@ function setStoreValue(key, value) {
 
 class Channel extends Component {
   constructor(props) {
+    console.log('Channel: constructor()');
     super(props);
 
     const identifier = hash.sha256().update(`${props.channel || ''}${props.keyword || ''}`).digest('hex');
@@ -49,6 +50,7 @@ class Channel extends Component {
   }
 
   componentDidMount() {
+    console.log('Channel: componentDidMount()');
     this.mounted = true;
 
     // Get area size
@@ -61,10 +63,12 @@ class Channel extends Component {
   }
 
   componentWillUnmount() {
+    console.log('Channel: componentDidUnmount()');
     this.mounted = false;
   }
 
   getApiRequest() {
+    console.log('Channel: getApiRequest()');
     return {
       id: this.requestId,
       params: {
@@ -74,7 +78,7 @@ class Channel extends Component {
   }
 
   onApiData(message) {
-
+    console.log(`Channel: onApiData(${JSON.stringify(message, null, 2)})`);
     // Clone the message since same object can be provided to others
     message = _.cloneDeep(message);
 

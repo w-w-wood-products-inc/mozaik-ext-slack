@@ -16,7 +16,7 @@ var ease = require('d3-ease');
 import _ from 'lodash';
 
 function pulse(opts) {
-
+  console.log(`Impulse: pulse(${opts}})`);
   for (var i = 1; i < opts.count; ++i) {
     d3.select(opts.element)
       .append('circle')
@@ -43,6 +43,7 @@ function getRandom(min, max) {
 
 export default class Impulse extends Component {
   constructor(props) {
+    console.log('Impulse: constructor()');
     super(props);
 
     this.mounted = false;
@@ -69,6 +70,7 @@ export default class Impulse extends Component {
   }
 
   componentDidMount() {
+    console.log('Impulse: componentDidMount()');
     this.mounted = true;
 
     // Get area size
