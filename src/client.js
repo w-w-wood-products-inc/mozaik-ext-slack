@@ -18,10 +18,12 @@ const tempDirName       = 'images';
 
 let users    = null;
 let channels = null;
+let logger = null;
 
 // Check if provided channel name matches with micromatch
 // rules (separated with comma) and returns true if match
 function matchChannel(channelName, filterString) {
+  logger.info(chalk.green("matchChannel"));
   return mm.all(
     channelName.replace('#', ''),
     filterString.split(',').map(filter => filter.trim())
@@ -29,6 +31,7 @@ function matchChannel(channelName, filterString) {
 }
 
 function getChannels(token) {
+  logger.info(chalk.green("getChannels"));
   return new Promise((resolve, reject) => {
     // Return cached data if available
     if (channels) {
@@ -41,14 +44,13 @@ function getChannels(token) {
       }
       channels = response.channels;
 
-
-
       return resolve(channels);
     });
   });
 }
 
 function getUsers(token) {
+  logger.info(chalk.green("getUsers()"));
   return new Promise((resolve, reject) => {
     // Return cached data if available
     if (users) {
@@ -67,7 +69,7 @@ function getUsers(token) {
 
 function getBotInfo(token, opts) {
 
-  console.log(`Get bot info: ${opts.botId}`);
+  logger.info(chalk.green(`Get bot info: ${opts.botId}`));
 
   return new Promise((resolve, reject) => {
     // Return cached data if available
@@ -84,7 +86,8 @@ function getBotInfo(token, opts) {
 
 // Get cached list of users
 function getChannel(token, opts) {
-  //console.log('Fetching channel:', opts);
+  logger.info(chalk.green(`getChannel(${token}, ${JSON.stringify(opts, null, 2)}`));
+  logger.info(chalk.green('Fetching channel:', opts));
   return getChannels()
     .then((channels) => {
 
@@ -95,7 +98,7 @@ function getChannel(token, opts) {
 
 // Get cached list of users
 function getUser(token, opts) {
-  //console.log('Fetching user:', opts);
+  logger.info(chalk.green('Fetching user:'), opts);
   return getUsers()
     .then((users) => {
 
@@ -105,6 +108,7 @@ function getUser(token, opts) {
 }
 
 function getImage(token, opts = {}) {
+  logger.info(chalk.green("getImage"));
   if (!opts.file || !opts.showImages) {
     return Promise.resolve();
   }
@@ -120,7 +124,7 @@ function getImage(token, opts = {}) {
     outputPath: outputPath
   })
     .then(() => {
-      console.log(`Downloaded file ${opts.file.title}`);
+      logger.info(chalk.green(`Downloaded file ${opts.file.title}`));
       return Promise.resolve(outputPath);
     });
 }
@@ -166,7 +170,7 @@ function deleteFiles(tempDir, maxAge = required()) {
 
           if (age > maxAge) {
 
-            console.log('Delete', entry);
+            logger.info(chalk.green('Delete'), entry);
 
             return new Promise((res, rej) => {
               fs.unlink(entryPath, (err) => {
@@ -246,6 +250,9 @@ function dirExists(dir) {
 
 // Create backend client for extension
 module.exports =  mozaik => {
+  logger = mozaik.logger;
+  logger.info(chalk.green("Testing logger"));
+  logger.info(chalk.green("Loading mozaik-ext-slack config"));
   // NOTE: Loaded here to avoid issues with testing
   const config = require('./config').default;
 
@@ -273,12 +280,13 @@ module.exports =  mozaik => {
     bot = EchoClient(echoMessage);
   }
   else {
-    mozaik.logger.info('Registering Slack client');
+    mozaik.logger.info(chalk.green('Registering Slack client'));
 
     bot = slack.rtm.client();
   }
 
   const reListen = () => {
+    logger.info("reListen()");
     try {
       bot.close();
     } catch (e) {
@@ -287,7 +295,7 @@ module.exports =  mozaik => {
       bot.listen({ token });
     }
 
-    mozaik.logger.info('Started listening Slack events');
+    mozaik.logger.info(chalk.green('Started listening Slack events'));
 
     return bot;
   };
@@ -306,7 +314,12 @@ module.exports =  mozaik => {
 
   // NOTE: API uses push method, no promise response
   const apiCalls = {
+
+
     message(send, params = {}) {
+
+      logger.info("Inside 'message' call");
+
       if (!_.isFunction(send)) {
         mozaik.logger.error(chalk.red('mozaik-ext-slack supports only push API'));
 
@@ -319,7 +332,8 @@ module.exports =  mozaik => {
       }
 
       bot.message((message) => {
-        //mozaik.logger.info(message);
+        logger.info("message from slack bot");
+        mozaik.logger.info(message);
 
         // Harmonize the user and bot data by loading them into userInfo
         let userPromise = null;
@@ -388,7 +402,7 @@ module.exports =  mozaik => {
             // Replace ids with data
             message.user    = user;
             message.channel = channel;
-            //console.log('Syncing Slack message:', message);
+            logger.info('Syncing Slack message:', message);
             send(message);
           })
           .catch((err) => {
