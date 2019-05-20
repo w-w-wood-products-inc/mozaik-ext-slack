@@ -391,14 +391,14 @@ module.exports =  mozaik => {
             }
 
             // Delete old files async (not interested in outcome)
-            deleteFiles(path.join(publicDir, tempDirName), maxImageAge);
+            //deleteFiles(path.join(publicDir, tempDirName), maxImageAge);
 
             // Remove Slack syntax to make outcome more readable
-            const removeFormat = getFormatRemover({
-              users:    users,
-              channels: channels
-            });
-            message.text  = removeFormat(message.text || '');
+            // const removeFormat = getFormatRemover({
+            //   users:    users,
+            //   channels: channels
+            // });
+            //message.text  = removeFormat(message.text || '');
             message.text  = replaceEmojis(message.text);
             message.image = image ? path.relative(publicDir, image) : null;
             message.text  = image ? _.get(message, 'file.initial_comment.comment', null) || message.file.title : message.text;
