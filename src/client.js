@@ -24,7 +24,7 @@ let logger = null;
 // rules (separated with comma) and returns true if match
 function matchChannel(channelName, filterString) {
   logger.info(chalk.green("matchChannel"));
-  return mm.all(
+  return mm(
     channelName.replace('#', ''),
     filterString.split(',').map(filter => filter.trim())
   );
@@ -37,7 +37,7 @@ function getChannels(token) {
     if (channels) {
       return resolve(channels);
     }
-    slack.
+
     // Fetch channels data from Slack
     slack.channels.list({ token }, (err, response) => {
       if (err) {
@@ -91,7 +91,7 @@ function getChannel(token, opts) {
   logger.info(chalk.green('Fetching channel:', opts));
   return getChannels()
     .then((channels) => {
-
+      console.log(JSON.stringify(channels, null, 2));
       // NOTE: Matches with Slack response. Example: { id: 'T01233' } or { name: 'bar' }
       return _.find(channels, opts);
     });
