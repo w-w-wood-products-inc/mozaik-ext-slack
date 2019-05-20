@@ -67,12 +67,12 @@ class Channel extends Component {
     this.mounted = false;
   }
 
-  getApiRequest() {
+  static getApiRequest(obj) {
     console.log('Channel: getApiRequest()');
     return {
-      id: this.requestId,
+      id: `slack.message`,
       params: {
-        channel: this.props.channel
+        channel: obj.channel
       }
     };
   }
