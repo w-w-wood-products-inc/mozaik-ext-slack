@@ -14,6 +14,12 @@ import Since   from './Since.js';
 import Impulse from './Impulse.js';
 
 
+import {
+  Widget,
+  WidgetHeader,
+  WidgetBody,
+} from '@mozaik/ui';
+
 const MIN_FONT_SIZE = 10;
 
 function getStoreValue(key) {
@@ -261,12 +267,12 @@ class Channel extends Component {
       bottom:      "1vmin"
     };
 
-    return (<div>
-      <div className="widget__header">
+    return (<Widget>
+      <WidgetHeader title = "Slack">
         <span className="widget__header__subject">{content.title}</span>
         <i className="fa fa-comment-o" />
-      </div>
-      <div className="widget__body" ref={(c) => this._body = c}>
+      </WidgetHeader>
+      <WidgetBody ref={(c) => this._body = c}>
         <div style={bodyStyle}>
           <div style={slackChannelMessageValueStyle}>{content.text}</div>
         </div>
@@ -278,8 +284,8 @@ class Channel extends Component {
             <div style={slackChannelFooterDateStyle}>{content.date}</div>
           </div>
         </div>
-      </div>
-    </div>);
+      </WidgetBody>
+    </Widget>);
   }
 }
 
