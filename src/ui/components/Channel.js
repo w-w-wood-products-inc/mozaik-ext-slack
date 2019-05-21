@@ -13,6 +13,7 @@ import PropTypes from 'prop-types';
 import Since   from './Since.js';
 import Impulse from './Impulse.js';
 
+
 const MIN_FONT_SIZE = 10;
 
 function getStoreValue(key) {
@@ -168,17 +169,97 @@ class Channel extends Component {
     content.style.fontSize   = fontSize;
     content.style.lineHeight = `${fontSize + 2}px`;
 
+  let slackChannelMessageImage = {
+      top:    "auto",
+      height: "100%",
+      width:  "100%"
+  };
+
+  let slackChannelMessageValue = {
+      height: "100%",
+      width:  "100%"
+  };
+
+  let slackChannelMessageEmpty = {
+      color:       "gray",
+      textShadow: "0 -2px 0 black"
+  };
+
+  let slackChannelMessage  = {
+      position:    "absolute",
+      top:         "20%",
+      width:       "100%",
+      textAlign:  "center",
+      fontSize:   "2rem",
+      lineHeight: "2.5rem",
+      zIndex:     "5000"
+    };
+
+
     // Construct classes
-    content.bodyClass = classNames('slack-channel__message', {
-      'slack-channel__message--empty': content.empty,
-      'slack-channel__message--image': message ? message.image : false
-    });
+    let bodyStyle = {
+      ...slackChannelMessage,
+    };
+
+    if(content.empty) {
+      bodyStyle = {
+        ...bodyStyle,
+        ...slackChannelMessageEmpty
+      };
+    }
+
+    if(message) {
+      bodyStyle = {
+        ...bodyStyle,
+        ...slackChannelMessageImage
+      };
+    }
+
+
     content.footerClass = classNames('slack-channel__footer', {
       'slack-channel__footer--empty': content.empty,
       'slack-channel__footer--image': message ? message.image : false
     });
 
-    const pulse = (this.props.showPulse && this.renderPulse) ? <Impulse className="slack-channel__impulse" message={content.text}></Impulse> : null;
+    const pulse =(this.props.showPulse && this.renderPulse)  ? <Impulse className="slack-channel__impulse" message={content.text}></Impulse> : null;
+
+    let slackChannelMessageValueStyle = (
+      {
+        position:   "absolute",
+        top:        "20%",
+        width:      "100%",
+        textAlign:  "center",
+        fontSize:   "2rem",
+        lineHeight: "2.5rem",
+        zIndex:     "5000"
+      }
+    );
+
+    let slackChannelFooterAvatarStyle = (
+      {
+        float: "left"
+      }
+    );
+
+  let slackChannelFooterMetaStyle = {
+      float:      "left",
+      margin:     "0",
+      boxSizing:  "border-box"
+    };
+
+  let slackChannelFooterAuthorStyle = {
+      float:      "none",
+      marginLeft: "1.6vmin",
+      fontSize:   "2vmin"
+    };
+
+  let slackChannelFooterDateStyle = {
+      float:       "none",
+      marginLeft:  "1.6vmin",
+      fontSize:    "1.6vmin",
+      position:    "relative",
+      bottom:      "1vmin"
+    };
 
     return (<div>
       <div className="widget__header">
@@ -186,15 +267,15 @@ class Channel extends Component {
         <i className="fa fa-comment-o" />
       </div>
       <div className="widget__body" ref={(c) => this._body = c}>
-        <div className={content.bodyClass}>
-          <div style={content.style} className="slack-channel__message--value">{content.text}</div>
+        <div style={bodyStyle}>
+          <div style={slackChannelMessageValueStyle}>{content.text}</div>
         </div>
         {pulse}
         <div className={content.footerClass}>
-          <div className="slack-channel__footer--avatar"><img src={content.avatar} /></div>
-          <div className="slack-channel__footer--meta">
-            <div className="slack-channel__footer--author">{content.author}</div>
-            <div className="slack-channel__footer--date">{content.date}</div>
+          <div style={slackChannelFooterAvatarStyle}><img src={content.avatar} /></div>
+          <div style={slackChannelFooterMetaStyle}>
+            <div style={slackChannelFooterAuthorStyle}>{content.author}</div>
+            <div style={slackChannelFooterDateStyle}>{content.date}</div>
           </div>
         </div>
       </div>
