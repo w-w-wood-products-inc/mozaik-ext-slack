@@ -290,7 +290,7 @@ class Channel extends Component {
     };
 
     return (<Widget>
-      <WidgetHeader title = {content.title}>
+      <WidgetHeader title = {`Channel: ${this.props.channel}`}>
         <i className="fa fa-comment-o" />
       </WidgetHeader>
       <WidgetBody ref={(c) => this._body = c}>
