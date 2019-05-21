@@ -145,7 +145,7 @@ class Channel extends Component {
 
     let content = {
       empty:  true,
-      title:  this.props.title || (this.props.channel ? `Slack ${this.props.channel}` : 'Slack'),
+      title:  this.props.title || (this.props.channel ? `Slack #${this.props.channel}` : 'Slack'),
       text:   'Send msg in Slack',
       style:  { },
       avatar: '',
@@ -268,8 +268,7 @@ class Channel extends Component {
     };
 
     return (<Widget>
-      <WidgetHeader title = "Slack">
-        <span className="widget__header__subject">{content.title}</span>
+      <WidgetHeader title = {content.title}>
         <i className="fa fa-comment-o" />
       </WidgetHeader>
       <WidgetBody ref={(c) => this._body = c}>
