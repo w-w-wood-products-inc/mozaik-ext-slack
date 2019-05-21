@@ -221,6 +221,28 @@ class Channel extends Component {
       };
     }
 
+    let slackChannelFooterImage = {
+      backgroundColor: "black"
+    };
+
+    let slackChannelFooter = {
+      position: "absolute",
+      bottom: "0",
+      width: "100%",
+      height: "48px"
+    };
+
+    let footerStyle = slackChannelFooter;
+    if(content.empty) {
+      footerStyle = {...footerStyle }
+    }
+
+    if(message) {
+      footerStyle = {
+        ...footerStyle,
+        slackChannelFooterImage
+      };
+    }
 
     content.footerClass = classNames('slack-channel__footer', {
       'slack-channel__footer--empty': content.empty,
@@ -276,7 +298,7 @@ class Channel extends Component {
           <div style={slackChannelMessageValueStyle}>{content.text}</div>
         </div>
         {pulse}
-        <div className={content.footerClass}>
+        <div style={footerStyle}>
           <div style={slackChannelFooterAvatarStyle}><img src={content.avatar} /></div>
           <div style={slackChannelFooterMetaStyle}>
             <div style={slackChannelFooterAuthorStyle}>{content.author}</div>
