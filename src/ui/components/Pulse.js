@@ -3,6 +3,14 @@ import React, { Component } from 'react'
 import reactMixin    from 'react-mixin';
 import ListenerMixin from 'reflux';
 import Mozaik from '@mozaik/ui';
+
+
+import {
+  Widget,
+  WidgetHeader,
+  WidgetBody,
+} from '@mozaik/ui'
+
 import PropTypes from 'prop-types';
 
 import Impulse from './Impulse';
@@ -47,13 +55,14 @@ export default class Pulse extends Component {
     const title = this.props.title;
 
     return (
-      <div className="slack__pulse">
-        <div className="widget__header slack__pulse--header">
-          <span className="widget__header__subject">{title}</span>
+      <Widget>
+        <WidgetHeader title={title}>
           <i className="fa fa-comment-o" />
-        </div>
-        <Impulse message={this.state.message}></Impulse>
-      </div>
+        </WidgetHeader>
+        <WidgetBody>
+          <Impulse message={this.state.message}></Impulse>
+        </WidgetBody>
+      </Widget>
     );
   }
 }
