@@ -55,7 +55,7 @@ Set additional API configuration settings as desired (also in `.env`):
 ```ini
 SLACK_SHOW_IMAGES=true
 SLACK_PUBLIC_DIR="assets/"
-SLACK_MAX_IMAGE_AGE?="8 hours"
+SLACK_MAX_IMAGE_AGE="8 hours"
 ```
 
 
