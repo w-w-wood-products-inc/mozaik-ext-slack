@@ -91,7 +91,6 @@ function getChannel(token, opts) {
   logger.info(chalk.green('Fetching channel:', opts));
   return getChannels()
     .then((channels) => {
-      console.log(JSON.stringify(channels, null, 2));
       // NOTE: Matches with Slack response. Example: { id: 'T01233' } or { name: 'bar' }
       return _.find(channels, opts);
     });
@@ -387,6 +386,7 @@ module.exports =  mozaik => {
             // Filter with params by using micromatch module
             // See options in documentation: https://www.npmjs.com/package/micromatch
             if (params.channel && !matchChannel(channel.name, params.channel)) {
+
               return;
             }
 
