@@ -1,6 +1,6 @@
 {
   "name": "mozaik-ext-slack",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "description": "Slack widgets to Mozaik dashboard",
   "author": "Juha Mustonen",
   "license": "MIT",
